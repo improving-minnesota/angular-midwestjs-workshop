@@ -34,7 +34,7 @@ api.add({
 
 
 - Not bad for 4 lines of code, amiright?
-- There are also ways to configure your resource for corner cases, but we will address that when needed in later labs.
+- There are also ways to configure your resource for corner cases, but we won't run into that today.
 
 ###### data service
 
