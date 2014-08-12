@@ -125,12 +125,12 @@ data.page('employees', query)
 ```xml
 <div class="text-center">
   <div pagination
-    total-items="pageConfig.totalItems"
-    page="pageConfig.page"
-    items-per-page="pageConfig.limit"
-    boundary-links="true"
-    rotate="true"
-    on-select-page="requestEmployees(page)">
+    total-items="pageConfig.totalItems" 
+    ng-model="pageConfig.page" 
+    items-per-page="pageConfig.limit" 
+    boundary-links="true" 
+    rotate="true" 
+    ng-change="requestEmployees(page)">
   </div>
 </div>
 ```
@@ -167,12 +167,12 @@ data.page('employees', query)
 ```xml
 <div class="text-center">
   <div pagination
-    total-items="pageConfig.totalItems"
-    page="pageConfig.page"
-    items-per-page="pageConfig.limit"
-    boundary-links="true"
-    rotate="true"
-    on-select-page="requestTimesheets(page)">
+    total-items="pageConfig.totalItems" 
+    ng-model="pageConfig.page" 
+    items-per-page="pageConfig.limit" 
+    boundary-links="true" 
+    rotate="true" 
+    ng-change="requestTimesheets(page)">
   </div>
 </div>
 ```

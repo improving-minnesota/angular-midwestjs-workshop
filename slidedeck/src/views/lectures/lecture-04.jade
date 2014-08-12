@@ -16,37 +16,23 @@ include ../includes/mixins
     p A module consists of configuration and run blocks which get applied to the application during the bootstrap process.
 
   section
-    p In its simplest form, the module consists of two kinds of blocks.
-
-  section
     h2 Configuration Blocks
 
   section
-    p Configuration blocks get executed during the provider registrations and configuration phase.
-
-  section
-    p Only providers and constants can be injected into configuration blocks.
-
-  section
-    p This is to prevent accidental instantiation of services before they have been fully configured.
+    ul
+      li get executed during the provider registrations and configuration phase
+      li Only providers and constants can be injected into configuration blocks
+      li Prevents accidental instantiation of services before they have been fully configured
 
   section
     h2 Run Blocks
 
   section
-    p Run blocks get executed after the injector is created and are used to kickstart the application.
-
-  section
-    p Only instances and constants can be injected into run blocks.
-
-  section
-    p This is to prevent further system configuration during application run time.
-
-  section
-    p A run block is the code needed to kickstart the application.
-
-  section
-    p It is executed after all of the services have been configured and the injector has been created.
+    ul 
+      li executed after the injector is created
+      li used to kickstart the application
+      li Only instances and constants can be injected into run blocks
+      li Prevents further system configuration during application run time
 
   section
     p Run blocks are the closest thing in Angular to the main method.
@@ -74,27 +60,19 @@ include ../includes/mixins
 
   section
     p When building single page applications, like ours, this presents a problem.
-
-  section
-    p The process of reloading a page adds significant overhead especially considering we already have everything we need to display every page.
+    ul 
+      li Reloading a page adds significant overhead
+      li We already have everything we need to display every page
 
   section
     p This is where the Angular $route service comes into play.
-
-  section
-    p The $route service is used for deep-linking URLs to controllers and views (HTML partials).
-
-  section
-    p It watches $location.url() and tries to map the path to an existing route definition.
-
-  section
-    p When the location changes, the $route service will load the HTML partial for the page and then compile and link the associated controller to it.
+    ul 
+      li Used for deep-linking URLs to controllers and views (HTML partials)
+      li Watches $location.url() and tries to map the path to an existing route definition
+      li $route service will load the HTML partial for the page and then compile and link the associated controller to it
 
   section
     p We use the $routeProvider in our module's configuration block to instruct the $route service which URL's are to be matched to which templates and controllers.
-
-  section
-    p Lets configure some routes.
 
   section
     p This configures the $route service so that when the browser URL is /projects, load the template, compile it, and link the project controller on it.
@@ -156,9 +134,6 @@ include ../includes/mixins
 
   section
     p Now that we've configured the $route service, we need to tell it where to display the matched templates in the DOM.
-
-  section
-    p For this, we'll use the ngView directive.
     br
     pre.
       <code class="html" data-trim>
@@ -176,14 +151,10 @@ include ../includes/mixins
 
   section
     p Since REST has an established pattern, we can use that pattern to simplify how we send and receive data with our RESTful API.
-
-  section
     p Angular provides the $resource service to help us with that.
 
   section
     p The $resource service is a factory to create a resource object that lets you interact with RESTful server-side data sources.
-
-  section
     p The returned resource object has action methods which provide high-level behaviors without the need to interact with the low level $http service.
 
   section
@@ -203,17 +174,12 @@ include ../includes/mixins
 
   section
     p Calling these methods invoke an $http request with the specified http method, destination and parameters.
-
-  section
     p When the data is returned from the server, the object is then an instance of the resource class.
-
-  section
     p The actions save, remove and delete are available on the resource instance as methods with the $ prefix.
 
   section
     p Let's create a resource.
-
-  section
+    br
     pre.
       <code class="js" data-trim>
       angular.module('app', [])
@@ -267,13 +233,10 @@ include ../includes/mixins
     p GET /employees/23
 
   section
-    p It is important to realize that invoking a $resource object method immediately returns an empty reference.
-
-  section
-    p Once the data is returned from the server the existing reference is populated with the actual data.
-
-  section
-    p We can supply a callback function to be executed once the reference is populated with data.
+    ul
+      li Invoking a $resource object method immediately returns an empty reference
+      li Once the data is returned from the server the existing reference is populated with the actual data
+      li Supply a callback function to be executed once the reference is populated with data
 
   section
     p One we have a populated instance of the employee resource, we can change its data and call actions on it.
@@ -306,12 +269,13 @@ include ../includes/mixins
       | to send network requests to a real server.
 
   section
-    p All we really need is to verify whether a certain request has been sent or not.
+    ul 
+      li Verify whether a certain request has been sent or not
+      ul 
+        li Let the application make requests
+        li Respond with pre-trained responses
+        li Assert that the end result is what we expect it to be
 
-  section
-    p Or alternatively just let the application make requests, respond with pre-trained responses, and assert that the end result is what we expect it to be.
-
-  section
     p To help with this, Angular provides the $httpBackend mock service.
 
   section
@@ -327,41 +291,37 @@ include ../includes/mixins
 
   section
     h3 Expectations
-    p Request expectations provide a way to make assertions about requests made by the application and define responses for those requests.
-
-  section
-    p The test will fail if the expected requests are not made or they're made in the wrong order.
+    ul 
+      li Make assertions about requests made by the application
+      li Define responses for those requests
+      li The test will fail if the expected requests are not made or they're made in the wrong order.
 
   section
     h3 Backend definitions
-    p Backend definitions allow you to define a fake backend for your application that will not assert a specified request was made. It ONLY returns the configured response.
-
-  section
-    p The test will pass whether or not the request gets made during testing.
+    ul 
+      li Define a fake backend for your application
+      li Does not assert the specified request was made
+      li ONLY returns the configured response.
 
   section
     p The $httpBackend used in production always responds to requests asynchronously.
 
   section
     p  If we preserved this behavior in unit testing, we'd have to create asynchronous unit tests.
-
-  section
-    p Asynchronous unit tests are hard to write, follow, and maintain.
+    ul 
+      li Asynchronous unit tests are hard to write, follow, and maintain.
 
   section
     p The mock can't respond synchronously either, that would change the execution of the code being tested.
 
   section
-    p For this reason, the mock $httpBackend service has a flush method.
+    p For this reason, the mock $httpBackend service has a flush() method.
+    ul 
+      li Allows you to explicitly flush pending requests.
 
-  section
-    p The flush method allows you to explicitly flush pending requests.
 
   section
     p Lets write a test that uses the mock $httpBackend service.
-
-  section
-    p For brevity, the test setup has been omitted.
     br
     pre.
       <code class="js" data-trim>
@@ -392,7 +352,7 @@ include ../includes/mixins
       </code>
 
   section
-    p Last, we can provide mock responses to our network requests.
+    p Lastly, we can provide mock responses to our network requests.
     br
     pre.
       <code class="js" data-trim>
