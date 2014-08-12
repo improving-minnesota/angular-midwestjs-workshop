@@ -7,14 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="Lecture 04 - Modules, Routing, and Resources">
-    <link href="/angular-training/assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/angular-training/assets/js/angular.js"></script>
+    <link href="/angular-workshop/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/angular-workshop/assets/js/angular.js"></script>
     <script type="text/javascript">
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '/angular-training/assets/css/pdf.css';
+        link.href = '/angular-workshop/assets/css/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
       
@@ -25,7 +25,7 @@
       <div class="opi-logo"></div>
       <div class="slides">
         <section data-state="index-slide" class="index-section">
-          <div class="sliding-image-container"><img src="/angular-training/assets/img/angular.png" class="animate-logos angular"><img src="/angular-training/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-training/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-training/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-training/assets/img/bower-logo.png" class="animate-logos bower"></div>
+          <div class="sliding-image-container"><img src="/angular-workshop/assets/img/angular.png" class="animate-logos angular"><img src="/angular-workshop/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-workshop/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-workshop/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-workshop/assets/img/bower-logo.png" class="animate-logos bower"></div>
           <div class="fading-header-container">
             <h1 class="animate-headers angular">Angular.js</h1>
             <h1 class="animate-headers grunt">Grunt.js</h1>
@@ -48,37 +48,25 @@
           <p>A module consists of configuration and run blocks which get applied to the application during the bootstrap process.</p>
         </section>
         <section>
-          <p>In its simplest form, the module consists of two kinds of blocks.</p>
-        </section>
-        <section>
           <h2>Configuration Blocks</h2>
         </section>
         <section>
-          <p>Configuration blocks get executed during the provider registrations and configuration phase.</p>
-        </section>
-        <section>
-          <p>Only providers and constants can be injected into configuration blocks.</p>
-        </section>
-        <section>
-          <p>This is to prevent accidental instantiation of services before they have been fully configured.</p>
+          <ul>
+            <li>Executed during the provider registrations and configuration phase</li>
+            <li>Only providers and constants can be injected into configuration blocks</li>
+            <li>Prevents accidental instantiation of services before they have been fully configured</li>
+          </ul>
         </section>
         <section>
           <h2>Run Blocks</h2>
         </section>
         <section>
-          <p>Run blocks get executed after the injector is created and are used to kickstart the application.</p>
-        </section>
-        <section>
-          <p>Only instances and constants can be injected into run blocks.</p>
-        </section>
-        <section>
-          <p>This is to prevent further system configuration during application run time.</p>
-        </section>
-        <section>
-          <p>A run block is the code needed to kickstart the application.</p>
-        </section>
-        <section>
-          <p>It is executed after all of the services have been configured and the injector has been created.</p>
+          <ul>
+            <li>Executed after the injector is created</li>
+            <li>Kickstarts the application</li>
+            <li>Only instances and constants can be injected into run blocks</li>
+            <li>Prevents further system configuration during application run time</li>
+          </ul>
         </section>
         <section>
           <p>Run blocks are the closest thing in Angular to the main method.</p>
@@ -105,27 +93,21 @@ angular.module('app', [])
         </section>
         <section>
           <p>When building single page applications, like ours, this presents a problem.</p>
-        </section>
-        <section>
-          <p>The process of reloading a page adds significant overhead especially considering we already have everything we need to display every page.</p>
+          <ul>
+            <li>Reloading a page adds significant overhead</li>
+            <li>We already have everything we need to display every page</li>
+          </ul>
         </section>
         <section>
           <p>This is where the Angular $route service comes into play.</p>
-        </section>
-        <section>
-          <p>The $route service is used for deep-linking URLs to controllers and views (HTML partials).</p>
-        </section>
-        <section>
-          <p>It watches $location.url() and tries to map the path to an existing route definition.</p>
-        </section>
-        <section>
-          <p>When the location changes, the $route service will load the HTML partial for the page and then compile and link the associated controller to it.</p>
+          <ul>
+            <li>Used for deep-linking URLs to controllers and views (HTML partials)</li>
+            <li>Watches $location.url() and tries to map the path to an existing route definition</li>
+            <li>$route service will load the HTML partial for the page and then compile and link the associated controller to it</li>
+          </ul>
         </section>
         <section>
           <p>We use the $routeProvider in our module's configuration block to instruct the $route service which URL's are to be matched to which templates and controllers.</p>
-        </section>
-        <section>
-          <p>Lets configure some routes.</p>
         </section>
         <section>
           <p>This configures the $route service so that when the browser URL is /projects, load the template, compile it, and link the project controller on it.</p><br>
@@ -183,10 +165,7 @@ angular.module('app', [])
 </pre>
         </section>
         <section>
-          <p>Now that we've configured the $route service, we need to tell it where to display the matched templates in the DOM.</p>
-        </section>
-        <section>
-          <p>For this, we'll use the ngView directive.</p><br>
+          <p>Now that we've configured the $route service, we need to tell it where to display the matched templates in the DOM.</p><br>
           <pre><code class="html" data-trim>
 &lt;body&gt;
   &lt;div ng-view&gt;&lt;/div&gt
@@ -203,14 +182,10 @@ angular.module('app', [])
         </section>
         <section>
           <p>Since REST has an established pattern, we can use that pattern to simplify how we send and receive data with our RESTful API.</p>
-        </section>
-        <section>
           <p>Angular provides the $resource service to help us with that.</p>
         </section>
         <section>
           <p>The $resource service is a factory to create a resource object that lets you interact with RESTful server-side data sources.</p>
-        </section>
-        <section>
           <p>The returned resource object has action methods which provide high-level behaviors without the need to interact with the low level $http service.</p>
         </section>
         <section>
@@ -229,17 +204,11 @@ angular.module('app', [])
         </section>
         <section>
           <p>Calling these methods invoke an $http request with the specified http method, destination and parameters.</p>
-        </section>
-        <section>
           <p>When the data is returned from the server, the object is then an instance of the resource class.</p>
-        </section>
-        <section>
           <p>The actions save, remove and delete are available on the resource instance as methods with the $ prefix.</p>
         </section>
         <section>
-          <p>Let's create a resource.</p>
-        </section>
-        <section>
+          <p>Let's create a resource.</p><br>
           <pre><code class="js" data-trim>
 angular.module('app', [])
   .controller(function($resource) {
@@ -290,13 +259,11 @@ $scope.employee = Employee.get({id: 23});
           <p>GET /employees/23</p>
         </section>
         <section>
-          <p>It is important to realize that invoking a $resource object method immediately returns an empty reference.</p>
-        </section>
-        <section>
-          <p>Once the data is returned from the server the existing reference is populated with the actual data.</p>
-        </section>
-        <section>
-          <p>We can supply a callback function to be executed once the reference is populated with data.</p>
+          <ul>
+            <li>Invoking a $resource object method immediately returns an empty reference</li>
+            <li>Once the data is returned from the server the existing reference is populated with the actual data</li>
+            <li>Supply a callback function to be executed once the reference is populated with data</li>
+          </ul>
         </section>
         <section>
           <p>One we have a populated instance of the employee resource, we can change its data and call actions on it.</p><br>
@@ -329,12 +296,14 @@ $scope.employee = Employee.get({id: 23}, function() {
           </p>
         </section>
         <section>
-          <p>All we really need is to verify whether a certain request has been sent or not.</p>
-        </section>
-        <section>
-          <p>Or alternatively just let the application make requests, respond with pre-trained responses, and assert that the end result is what we expect it to be.</p>
-        </section>
-        <section>
+          <ul>
+            <li>Verify whether a certain request has been sent or not</li>
+            <ul>
+              <li>Let the application make requests</li>
+              <li>Respond with pre-trained responses</li>
+              <li>Assert that the end result is what we expect it to be</li>
+            </ul>
+          </ul>
           <p>To help with this, Angular provides the $httpBackend mock service.</p>
         </section>
         <section>
@@ -352,41 +321,40 @@ $scope.employee = Employee.get({id: 23}, function() {
         </section>
         <section>
           <h3>Expectations</h3>
-          <p>Request expectations provide a way to make assertions about requests made by the application and define responses for those requests.</p>
-        </section>
-        <section>
-          <p>The test will fail if the expected requests are not made or they're made in the wrong order.</p>
+          <ul>
+            <li>Make assertions about requests made by the application</li>
+            <li>Define responses for those requests</li>
+            <li>The test will fail if the expected requests are not made or they're made in the wrong order.</li>
+          </ul>
         </section>
         <section>
           <h3>Backend definitions</h3>
-          <p>Backend definitions allow you to define a fake backend for your application that will not assert a specified request was made. It ONLY returns the configured response.</p>
-        </section>
-        <section>
-          <p>The test will pass whether or not the request gets made during testing.</p>
+          <ul>
+            <li>Define a fake backend for your application</li>
+            <li>Does not assert the specified request was made</li>
+            <li>ONLY returns the configured response.</li>
+          </ul>
         </section>
         <section>
           <p>The $httpBackend used in production always responds to requests asynchronously.</p>
         </section>
         <section>
           <p> If we preserved this behavior in unit testing, we'd have to create asynchronous unit tests.</p>
-        </section>
-        <section>
-          <p>Asynchronous unit tests are hard to write, follow, and maintain.</p>
+          <ul>
+            <li>Asynchronous unit tests are hard to write, follow, and maintain.</li>
+          </ul>
         </section>
         <section>
           <p>The mock can't respond synchronously either, that would change the execution of the code being tested.</p>
         </section>
         <section>
-          <p>For this reason, the mock $httpBackend service has a flush method.</p>
+          <p>For this reason, the mock $httpBackend service has a flush() method.</p>
+          <ul>
+            <li>Allows you to explicitly flush pending requests.</li>
+          </ul>
         </section>
         <section>
-          <p>The flush method allows you to explicitly flush pending requests.</p>
-        </section>
-        <section>
-          <p>Lets write a test that uses the mock $httpBackend service.</p>
-        </section>
-        <section>
-          <p>For brevity, the test setup has been omitted.</p><br>
+          <p>Lets write a test that uses the mock $httpBackend service.</p><br>
           <pre><code class="js" data-trim>
 describe('a controller that uses $http', function() {
   it('should be able to make a network request', function () {
@@ -415,7 +383,7 @@ describe('a controller that uses $http', function() {
 </pre>
         </section>
         <section>
-          <p>Last, we can provide mock responses to our network requests.</p><br>
+          <p>Lastly, we can provide mock responses to our network requests.</p><br>
           <pre><code class="js" data-trim>
 describe('a controller that uses $http', function() {
   it('should put the users on scope', function () {
@@ -435,6 +403,6 @@ describe('a controller that uses $http', function() {
         </section>
       </div>
     </div>
-    <script src="/angular-training/assets/js/app.js"></script>
+    <script src="/angular-workshop/assets/js/app.js"></script>
   </body>
 </html>

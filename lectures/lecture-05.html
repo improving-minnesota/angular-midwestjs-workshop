@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Lecture 05 - Directives</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Lecture 05 - Directives">
+    <link href="/angular-workshop/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/angular-workshop/assets/js/angular.js"></script>
+    <script type="text/javascript">
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '/angular-workshop/assets/css/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+      
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="opi-logo"></div>
+      <div class="slides">
+        <section data-state="index-slide" class="index-section">
+          <div class="sliding-image-container"><img src="/angular-workshop/assets/img/angular.png" class="animate-logos angular"><img src="/angular-workshop/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-workshop/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-workshop/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-workshop/assets/img/bower-logo.png" class="animate-logos bower"></div>
+          <div class="fading-header-container">
+            <h1 class="animate-headers angular">Angular.js</h1>
+            <h1 class="animate-headers grunt">Grunt.js</h1>
+            <h1 class="animate-headers yeoman">Yeoman</h1>
+            <h1 class="animate-headers node">Node.js</h1>
+            <h1 class="animate-headers bower">Bower.js</h1>
+          </div>
+          <h3>Directives</h3>
+          <h4>Lecture 05</h4>
+        </section>
+        <section>
+          <h1>Lab Four</h1>
+          <h2>Solution</h2>
+        </section>
+        <section>
+          <h1>Directives</h1>
+        </section>
+        <section>
+          <p>
+            At a high level, directives are markers on a DOM element (such as an attribute, element name, or CSS class)
+            that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element.
+          </p>
+        </section>
+        <section><img src="/tda-angular-slides/assets/img/wat_grande.jpg" class="no-style slide-image"></section>
+        <section>
+          <p>Angular is the meta-framework to create a new vocabulary(dsl) for the browser. </p>
+          <p>Directives are the glue between <strong>DOM</strong> and <strong>Scope</strong>.</p>
+        </section>
+        <section><img src="/tda-angular-slides/assets/img/highfive.gif" class="no-style slide-image"></section>
+        <section>
+          <p>$compile can match directives based on element names,</p>
+          <div class="text-center">
+            <pre><code class="html" data-trim>
+&lt;my-cool-directive&gt; &lt;/my-cool-directive&gt;
+
+</code></pre>
+          </div>
+          <p>attributes,</p>
+          <div class="text-center">
+            <pre><code class="html" data-trim>
+&lt;div my-cool-directive&gt; &lt;/div&gt;
+
+</code></pre>
+          </div>
+          <p>class names,</p>
+          <div class="text-center">
+            <pre><code class="html" data-trim>
+&lt;div class="my-cool-directive"&gt; &lt;/div&gt;
+
+</code></pre>
+          </div>
+          <p>and html comments.</p>
+          <div class="text-center">
+            <pre><code class="html" data-trim>
+&lt;!-- directive: my-cool-directive --&gt;
+
+</code>
+</pre>
+          </div>
+        </section>
+        <section>
+          <p>Below is an example of declaring a directive and referring to it in HTML.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', [
+    //...
+  ]);
+  
+</code></pre>
+          <pre><code class="html" data-trim>
+&lt;div my-cool-directive&gt;&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <h2>Directive Configuration</h2>
+        </section>
+        <section>
+          <h3>Template</h3>
+        </section>
+        <section>
+          <p>You can add inline templates for very small templates or provide a url for larger templates.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      template: '&lt;div&gt;{{helloWorld}}&lt;/div&gt;'
+      
+      or
+      
+      templateUrl: 'templates/directives/my-cool-directive.html'
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <h3>Compile</h3>
+        </section>
+        <section>
+          <p>If you need modify the directive's template, use the compile function. </p>
+        </section>
+        <section>
+          <p>The compile function </p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      compile : function (tElement, tAttrs, transclude) {
+        tElement.addClass('hipster');
+        
+        return {
+          pre: function preLink (scope, iElement, iAttrs, controller) { ... },
+          post: function postLink (scope, iElement, iAttrs, controller) { ... }
+        }
+      }
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <h3>Linking</h3>
+        </section>
+        <section>
+          <p>Directives that want to modify the element or scope typically use the link option.</p>
+        </section>
+        <section>
+          <p>Inside the link function, you can initialize scope, watch properties, modify element attributes, and etc.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      scope: {
+        myVar: '='
+      },
+      link: function postLink (scope, element, attrs) {
+        scope.updatedCount = 0;
+        scope.$watch('myVar', function() {
+          scope.updatedCount += 1;
+          var contents = 'myVar updated ' +
+            scope.updatedCount + ' times.';
+          element.text(contents);
+        });
+      }
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <p>When do I use compile vs. linking?</p>
+          <ul>
+            <li>Compile is used to modify the directive's <strong>template</strong>.</li>
+            <li>Link has access to <strong>Scope</strong>.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Restrict</h3>
+        </section>
+        <section>
+          <p>
+            When you create a directive, it is restricted to attribute only by default. In order to create
+            directives that are triggered by element or class name, you need to use the restrict option.
+          </p>
+          <ul>
+            <li><strong>A</strong> - Matches attribute name.</li>
+            <li><strong>E</strong> - Matches element name.</li>
+            <li><strong>C</strong> - Matches class name.</li>
+            <li>
+              <strong>M</strong> - Matches HTML comment.
+              
+            </li>
+          </ul>
+        </section>
+        <section>
+          <p>The directive below would match elements, attributes, CSS class names, or HTML comments.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      restrict: 'AECM'
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <h3>Replace</h3>
+        </section>
+        <section>
+          <p>When replace is true, the template will replace the element the directive is specified on.</p>
+          <p>When replace is false, the template will be placed inside the element the directive is specified on.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      replace: true
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <h3>Scope</h3>
+        </section>
+        <section>
+          <p>By default, a directive uses the parent scope.</p>
+          <p>This can be problematic because it could set or change values that already exist, breaking encapsulation.</p>
+        </section>
+        <section>
+          <p>
+            What we want to be able to do is separate the scope inside a directive from the scope outside, and
+            then map the outer scope to a directive's inner scope.
+          </p>
+        </section>
+        <section>
+          <p>The directive below will have an isolate scope that is not mapped to anything in the parent scope (completely isolated)</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      scope: true
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <p>When we want to map the outer scope to the directives inner scope, we use a scope configuration object.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective',function() {
+    return {
+      scope: {
+        // ...
+      }
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <p>There are multiple ways to map parent scope to the isolate scope.</p>
+          <p>Lets start with the most common, '=' or two way binding.</p>
+        </section>
+        <section>
+          <p>This will instruct Angular to bind the value supplied with the element attribute "some-attribute" to the isolate scope.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      scope: {
+        someAttribute: '='
+      }
+    };
+  });
+  
+</code></pre>
+          <pre><code class="html" data-trim>
+&lt;div my-cool-directive some-attribute="myAttribute"&gt;&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>This will create a two way mapping between the parent scope and the isolate scope.</p>
+          <p>Changes made in the parent scope are reflected in the isolate scope and visa versa.</p><img src="/tda-angular-slides/assets/img/scope.png" class="no-style slide-image">
+        </section>
+        <section>
+          <p>The second type of binding in the attribute value or expression binding '@'.</p>
+        </section>
+        <section>
+          <p>The '@' binding maps the attribute value (string) in the context of the parent scope to the isolate scope.</p>
+        </section>
+        <section>
+          <p>If scope.value was 5, the value of attributeValue in the isolate scope would be "11" (string).</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective',function() {
+    return {
+      scope: {
+        attributeValue: '@'
+      }
+    };
+  });
+  
+</code></pre>
+          <pre><code class="html" data-trim>
+&lt;div my-cool-directive attribute-value="{{ scope.value + 6 }}" &gt;&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>Lastly, we have function binding or '&'</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myCoolDirective', function() {
+    return {
+      scope: {
+        someCalculation: '&'
+      },
+      link: function (scope, elem, attrs) {
+        // something happens
+        scope.someCalculation({amount: 5});
+      }
+    };
+  });
+  
+</code></pre>
+          <pre><code class="html" data-trim>
+&lt;div my-cool-directive some-calculation="calculateSomeValue(amount)" &gt;&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <h3>Transclude</h3>
+        </section>
+        <section>
+          <p>To use transclusion with a directive, just add the transclude option to the directive configuration.</p><br>
+          <pre><code data-trim>
+angular.module('app.directives', [])
+  .directive('myFrameDirective', function() {
+    return {
+      transclude: true
+    };
+  });
+  
+</code>
+</pre>
+        </section>
+        <section>
+          <p>The transclude option changes the way scopes are nested.</p>
+          <p>The best way to look at transclusion is as a picture frame.</p><img src="/tda-angular-slides/assets/img/transclude-frame.png" class="no-style slide-image">
+        </section>
+        <section>
+          <p>First, lets look at using a transclude directive</p><br>
+          <pre><code class="html" data-trim>
+&lt;div my-frame-directive &gt;
+  &lt;p&gt;{{outerScopeVariable}}&lt;/p&gt;
+&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>Now, lets look at the template for a transclusion directive</p><br>
+          <pre><code class="html" data-trim>
+&lt;div class="{{isolateScopeVariable}}"&gt;
+  &lt;div ng-transclude &gt;&lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+          <p>Angular will place the contents of the directive</p>
+          <div class="text-center">
+            <pre><code class="html" data-trim>
+&lt;p&gt;{{outerScopeVariable}}&lt;/p&gt;
+
+</code></pre>
+          </div>
+          <p>in the place of the element with the ng-transclude attribute</p>
+        </section>
+        <section>
+          <p>After compilation, the final DOM will look like</p><br>
+          <pre><code class="html" data-trim>
+&lt;div class="{{isolateScopeVariable}}"&gt;
+  &lt;p&gt;{{outerScopeVariable}}&lt;/p&gt;
+&lt;/div&gt;
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>Let's look at the picture frame again.</p><img src="/tda-angular-slides/assets/img/transclude-frame.png" class="no-style slide-image">
+        </section>
+        <section><img src="/tda-angular-slides/assets/img/mind-blown.gif" class="no-style slide-image"></section>
+        <section>
+          <h1>Unit Testing</h1>
+          <h2>Continued</h2>
+        </section>
+        <section>
+          <p>Now that we've learned about how to create our own directives, we'll need to learn how we can test them.</p>
+        </section>
+        <section>
+          <p>First, we'll need to make sure that we inject the $compile service, our directive module, and any templates used by the directive.</p><br>
+          <pre><code data-trim>
+beforeEach(module(
+  'app.directives',
+  'assets/templates/directives/my-cool-directive.html'
+));
+
+beforeEach(inject(function($rootScope, _$compile_) {
+  $compile = _$compile_;
+  $scope = $rootScope.$new();
+}));
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>Then, we'll create our mock <code>$scope</code>, element, and finally use the <code>$compile</code> service to compile and link our directive.</p><br>
+          <pre><code data-trim>
+beforeEach(function () {
+  // Notice that we can use properties
+  // on our mock scope with the directive below
+  $scope.myColor = 'red';
+  
+  // Create a jqLite element with our directive
+  element = angular.element(
+    '&lt;div my-cool-directive color="myColor"&gt;' +
+    '&lt;/div&gt;'
+  );
+  
+  // This will compile the element with our mock scope
+  $compile(element)($scope);
+});
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>In a real browser, scope digests are automatically triggered by AngularJS in reaction to various events.</p>
+        </section>
+        <section>
+          <p>There are no such events during automated testing so we'll need to force a scope digest.</p>
+        </section>
+        <section>
+          <p>The forced digest cycle will propagate changes between the parent scope and isolate scope.</p><br>
+          <pre><code data-trim>
+beforeEach(function () {
+  $scope.myColor = 'red';
+  
+  element = angular.element(
+    '&lt;div my-cool-directive color="myColor"&gt;' +
+    '&lt;/div&gt;'
+  );
+  
+  $compile(element)($scope);
+  
+  // This propagate the value of $scope.myColor with the
+  // directive's scope.color
+  $scope.$digest();
+});
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>Now we're ready to start testing the expected behavior of the directive.</p>
+        </section>
+        <section>
+          <p>Lets assume that myCoolDirective sets the CSS attribute  "color" on the element based on myColor.</p><br>
+          <pre><code data-trim>
+describe('my cool directive', function() {
+  it('should set the element color', function () {
+    expect(element.css('color')).to.equal('red');
+  });
+  
+  it('should respond to changes', function () {
+    // Notice that we're forcing a digest by using apply
+    $scope.$apply(function() {
+      $scope.myColor = 'blue';
+    });
+    expect(element.css('color')).to.equal('blue');
+  });
+});
+
+</code>
+</pre>
+        </section>
+        <section>
+          <p>What if we want to test something that's not directly accessable through the DOM?</p>
+        </section>
+        <section>
+          <p>AngularJS provides jqLite functions that expose the parent scope and isolate scope of a particular element</p>
+        </section>
+        <section>
+          <p>The non-isolate scope can be accessed by calling<code>element.scope()</code></p>
+        </section>
+        <section>
+          <p>The isolate scope can be accessed by calling<code>element.isolateScope()</code></p>
+        </section>
+        <section>
+          <p>Here, we can validate the binding between the parent and isolate scope.</p><br>
+          <pre><code data-trim>
+describe('my cool directive', function() {
+  it('should have bound scopes', function () {
+    $scope.$apply(function() {
+      $scope.myColor = 'blue';
+    });
+    expect(element.isolateScope().color).to.equal('blue');
+  });
+});
+
+</code>
+</pre>
+        </section>
+        <section>
+          <h2>Lab 8 - Directives</h2>
+        </section>
+      </div>
+    </div>
+    <script src="/angular-workshop/assets/js/app.js"></script>
+  </body>
+</html>

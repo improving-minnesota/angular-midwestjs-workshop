@@ -7,14 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="Lecture 03 - Karma and Unit Testing">
-    <link href="/angular-training/assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/angular-training/assets/js/angular.js"></script>
+    <link href="/angular-workshop/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/angular-workshop/assets/js/angular.js"></script>
     <script type="text/javascript">
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '/angular-training/assets/css/pdf.css';
+        link.href = '/angular-workshop/assets/css/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
       
@@ -25,7 +25,7 @@
       <div class="opi-logo"></div>
       <div class="slides">
         <section data-state="index-slide" class="index-section">
-          <div class="sliding-image-container"><img src="/angular-training/assets/img/angular.png" class="animate-logos angular"><img src="/angular-training/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-training/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-training/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-training/assets/img/bower-logo.png" class="animate-logos bower"></div>
+          <div class="sliding-image-container"><img src="/angular-workshop/assets/img/angular.png" class="animate-logos angular"><img src="/angular-workshop/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-workshop/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-workshop/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-workshop/assets/img/bower-logo.png" class="animate-logos bower"></div>
           <div class="fading-header-container">
             <h1 class="animate-headers angular">Angular.js</h1>
             <h1 class="animate-headers grunt">Grunt.js</h1>
@@ -75,10 +75,11 @@
           </ul>
         </section>
         <section>
-          <p>
-            The results for each test against each browser are examined and displayed via the command line
-            to the developer such that they can see which browsers and tests passed or failed.
-          </p>
+          <p>Test Results</p>
+          <ul>
+            <li>Examined and displayed via the command line or 'debug' tab in browser.</li>
+            <li>Easy to see which browsers and tests passed or failed</li>
+          </ul>
         </section>
         <section>
           <p>We'll use Karma with Grunt to integrate tests directly into our development workflow.</p>
@@ -88,8 +89,6 @@
         </section>
         <section>
           <p>Jasmine is a behavior-driven development (BDD) framework for testing JavaScript code.</p>
-        </section>
-        <section>
           <p>Behavior driven development uses examples to illustrate behavior.</p>
         </section>
         <section>
@@ -97,12 +96,10 @@
         </section>
         <section>
           <p>A test suite begins with a call to the global Jasmine function<strong> describe()</strong>with two parameters: a string and a function.</p>
-        </section>
-        <section>
-          <p>
-            The string is a name or title for a spec suite – usually what is being tested and function is a block of code
-            that implements the suite.
-          </p>
+          <ul>
+            <li>Name or title for a spec suite – usually what is being tested</li>
+            <li>Block of code that implements the suite.</li>
+          </ul>
         </section>
         <section>
           <pre><code class="js" data-trim>
@@ -121,9 +118,10 @@ describe("Some feature", function() {
         </section>
         <section>
           <p>Specs are defined by calling the global Jasmine function<strong> it()</strong>which, like describe(), takes a string and a function.</p>
-        </section>
-        <section>
-          <p>The string is the title of the spec and the function is the spec, or test.</p>
+          <ul>
+            <li>Title of the spec</li>
+            <li>The spec, or test.</li>
+          </ul>
         </section>
         <section>
           <pre><code class="js" data-trim>
@@ -164,16 +162,12 @@ describe("Some feature", function() {
           <h2>Expectations</h2>
         </section>
         <section>
-          <p>Expectations are built with the function 'expect' which takes a value, called the actual.</p>
-        </section>
-        <section>
-          <p>It is chained with a Matcher function, which takes the expected value.</p>
-        </section>
-        <section>
-          <p>Each matcher implements a boolean comparison between the actual value and the expected value.</p>
-        </section>
-        <section>
-          <p>The matcher is responsible for reporting to Jasmine if the expectation is true or false.</p>
+          <p>Expectations are built with the function </p><strong>expect()</strong>which takes a value, called the actual.
+          <ul>
+            <li>It is chained with a Matcher function, which takes the expected value.</li>
+            <li>Each matcher implements a boolean comparison between the actual value and the expected value.</li>
+            <li>The matcher is responsible for reporting to Jasmine if the expectation is true or false.</li>
+          </ul>
         </section>
         <section>
           <pre><code class="js" data-trim>
@@ -216,8 +210,6 @@ describe("Some feature", function() {
         </section>
         <section>
           <p>Lets start by mocking a module that we'll be testing.</p>
-        </section>
-        <section>
           <p>Angular provides angular.mock.module (aliased as 'module' on window) to mock Angular modules</p>
         </section>
         <section>
@@ -235,8 +227,6 @@ beforeEach(module(
         </section>
         <section>
           <p>Now that we've mocked the module that contains the component we wish to test, we need to mock the component itself.</p>
-        </section>
-        <section>
           <p>More than likely, our component will have dependencies that are required to test it.</p>
         </section>
         <section>
@@ -267,8 +257,6 @@ beforeEach(
         </section>
         <section>
           <p>Lets break this down and discuss what's going on in each step.</p>
-        </section>
-        <section>
           <p>To instantiate our controller for testing, we'll need to inject the $controller service and $rootScope service.</p>
         </section>
         <section>
@@ -343,8 +331,6 @@ inject(
         </section>
         <section>
           <p>Now that we have an instance of our controller, we can start testing it.</p>
-        </section>
-        <section>
           <pre><code class="js" data-trim>
 it('should be able to instantiate the controller', function () {
   expect(controller).to.be.ok;
@@ -363,6 +349,6 @@ it('should have person on scope', function () {
         </section>
       </div>
     </div>
-    <script src="/angular-training/assets/js/app.js"></script>
+    <script src="/angular-workshop/assets/js/app.js"></script>
   </body>
 </html>

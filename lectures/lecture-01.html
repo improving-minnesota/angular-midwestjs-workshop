@@ -7,14 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="Lecture 01 - Project Layout and Development Tools">
-    <link href="/angular-training/assets/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/angular-training/assets/js/angular.js"></script>
+    <link href="/angular-workshop/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/angular-workshop/assets/js/angular.js"></script>
     <script type="text/javascript">
       if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '/angular-training/assets/css/pdf.css';
+        link.href = '/angular-workshop/assets/css/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
       }
       
@@ -25,7 +25,7 @@
       <div class="opi-logo"></div>
       <div class="slides">
         <section data-state="index-slide" class="index-section">
-          <div class="sliding-image-container"><img src="/angular-training/assets/img/angular.png" class="animate-logos angular"><img src="/angular-training/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-training/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-training/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-training/assets/img/bower-logo.png" class="animate-logos bower"></div>
+          <div class="sliding-image-container"><img src="/angular-workshop/assets/img/angular.png" class="animate-logos angular"><img src="/angular-workshop/assets/img/grunt-logo.png" class="animate-logos grunt"><img src="/angular-workshop/assets/img/yeoman-logo.png" class="animate-logos yeoman"><img src="/angular-workshop/assets/img/node-logo.png" class="animate-logos node"><img src="/angular-workshop/assets/img/bower-logo.png" class="animate-logos bower"></div>
           <div class="fading-header-container">
             <h1 class="animate-headers angular">Angular.js</h1>
             <h1 class="animate-headers grunt">Grunt.js</h1>
@@ -43,21 +43,15 @@
           <p>NPM is the official package manager for Node.js</p>
         </section>
         <section>
-          <p>NPM runs through the command line and manages dependencies for an application.</p>
-        </section>
-        <section>
-          <p>It also allows users to install Node.js applications that are available on the npm registry.</p>
-        </section>
-        <section>
-          <p>For those who are familiar with dependency management tools and artifact repositories like Maven and Maven Central, NPM is similar.</p>
-        </section>
-        <section>
-          <p>One distinct difference between the two is that NPM does not manage build processes like Maven does.</p>
+          <ul>
+            <li>Runs through the command line</li>
+            <li>Manages dependencies for an application</li>
+            <li>Installs Node.js applications that are available on the npm registry</li>
+            <li>Similar to Maven and Maven Central</li>
+          </ul>
         </section>
         <section>
           <p>Most, if not all, node projects contain a package.json file in the root project.</p>
-        </section>
-        <section>
           <p>This file exposes metadata about your application as well as it's dependencies.</p>
         </section>
         <section>
@@ -83,10 +77,10 @@
           <h1>Bower</h1>
         </section>
         <section>
-          <p>Bower is a package manager for front end dependencies.</p>
-        </section>
-        <section>
-          <p>We'll be using Bower in our project to manage libraries that we use in our Angular application, such as Angular itself.</p>
+          <ul>
+            <li>Bower is a package manager for front end dependencies.</li>
+            <li>We'll be using Bower in our project to manage libraries that we use in our Angular application, such as Angular itself.</li>
+          </ul>
         </section>
         <section>
           <p>Like NPM, bower requires a bower.json file in the root of the project that specifies metadata about our project as well as its dependencies.</p>
@@ -111,11 +105,11 @@
         </section>
         <section>
           <p>Aside from using NPM and Bower to install our dependencies, we wont focus much on NPM or Bower in this training class.</p>
-        </section>
-        <section>
           <p>You can visit the NPM and Bower websites to learn more about them.</p>
-          <p><a href="http://bower.io">bower.io</a></p>
-          <p><a href="https://www.npmjs.org">npmjs.org</a></p>
+          <ul>
+            <li><a href="http://bower.io">bower.io</a></li>
+            <li><a href="https://www.npmjs.org">npmjs.org</a></li>
+          </ul>
         </section>
         <section>
           <h1>Grunt</h1>
@@ -145,16 +139,10 @@
           </p>
         </section>
         <section>
-          <p>We'll go into more detail about Grunt and how to use it to automate our development process in the last lecture of this training class.</p>
-        </section>
-        <section>
           <h1>Project Layout</h1>
         </section>
         <section>
           <p>In this training class, you'll be building a Angular application that tracks employee timesheets across different projects.</p>
-        </section>
-        <section>
-          <p>To help speed things along so we can focus on the really important parts like Angular, we've created the base project structure for you.</p>
         </section>
         <section>
           <p>Lets take a look.</p>
@@ -165,6 +153,6 @@
         </section>
       </div>
     </div>
-    <script src="/angular-training/assets/js/app.js"></script>
+    <script src="/angular-workshop/assets/js/app.js"></script>
   </body>
 </html>
