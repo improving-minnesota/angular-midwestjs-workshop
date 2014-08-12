@@ -187,12 +187,12 @@ module.exports = function(grunt) {
       .use(redirect())
       .use(function(req, res, next) {
         if (req.url == '/') {
-          res.redirect('/angular-workshop');
+          res.redirect('/angular-midwestjs-workshop');
         } else {
           next();
         }
       })
-      .use('/angular-workshop', connect.static('dist'))
+      .use('/angular-midwestjs-workshop', connect.static('dist'))
       .listen(8001);
   });
 

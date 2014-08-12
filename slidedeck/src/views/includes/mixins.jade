@@ -7,14 +7,14 @@ mixin page(title)
       meta(name="apple-mobile-web-app-capable", content="yes")
       meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
       meta(name="description", content=title)
-      link(href="/angular-workshop/assets/css/style.css", rel="stylesheet", type="text/css")
-      script(src="/angular-workshop/assets/js/angular.js")
+      link(href="/angular-midwestjs-workshop/assets/css/style.css", rel="stylesheet", type="text/css")
+      script(src="/angular-midwestjs-workshop/assets/js/angular.js")
       script(type='text/javascript').
         if( window.location.search.match( /print-pdf/gi ) ) {
           var link = document.createElement( 'link' );
           link.rel = 'stylesheet';
           link.type = 'text/css';
-          link.href = '/angular-workshop/assets/css/pdf.css';
+          link.href = '/angular-midwestjs-workshop/assets/css/pdf.css';
           document.getElementsByTagName( 'head' )[0].appendChild( link );
         }
 
@@ -24,16 +24,16 @@ mixin page(title)
         .slides
           block
 
-      script(src="/angular-workshop/assets/js/app.js")
+      script(src="/angular-midwestjs-workshop/assets/js/app.js")
 
 
 mixin animated-header()
   .sliding-image-container
-    img.animate-logos.angular(src="/angular-workshop/assets/img/angular.png")
-    img.animate-logos.grunt(src="/angular-workshop/assets/img/grunt-logo.png")
-    img.animate-logos.yeoman(src="/angular-workshop/assets/img/yeoman-logo.png")
-    img.animate-logos.node(src="/angular-workshop/assets/img/node-logo.png")
-    img.animate-logos.bower(src="/angular-workshop/assets/img/bower-logo.png")
+    img.animate-logos.angular(src="/angular-midwestjs-workshop/assets/img/angular.png")
+    img.animate-logos.grunt(src="/angular-midwestjs-workshop/assets/img/grunt-logo.png")
+    img.animate-logos.yeoman(src="/angular-midwestjs-workshop/assets/img/yeoman-logo.png")
+    img.animate-logos.node(src="/angular-midwestjs-workshop/assets/img/node-logo.png")
+    img.animate-logos.bower(src="/angular-midwestjs-workshop/assets/img/bower-logo.png")
   .fading-header-container
     h1.animate-headers.angular Angular.js
     h1.animate-headers.grunt Grunt.js
