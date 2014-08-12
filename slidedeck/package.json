@@ -1,9 +1,9 @@
 {
-  "name": "Angular-Training-Slides",
+  "name": "Angular-Workshop-Slides",
   "version": "0.0.1",
-  "description": "Slide deck for ",
+  "description": "Slide deck for Midwest JS Angular workshop",
   "main": "index.js",
-  "author": "Michael Kelly",
+  "author": "Bruce Coddington",
   "devDependencies": {
     "grunt": "0.4.2",
     "jade": "1.3.0",

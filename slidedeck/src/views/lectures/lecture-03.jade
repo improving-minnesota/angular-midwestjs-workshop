@@ -42,9 +42,10 @@ include ../includes/mixins
       li Within each of the browsers you configure.
 
   section
-    p
-      | The results for each test against each browser are examined and displayed via the command line
-      | to the developer such that they can see which browsers and tests passed or failed.
+    p Test Results
+    ul 
+      li Examined and displayed via the command line or 'debug' tab in browser.
+      li Easy to see which browsers and tests passed or failed
 
   section
     p We'll use Karma with Grunt to integrate tests directly into our development workflow.
@@ -54,8 +55,6 @@ include ../includes/mixins
 
   section
     p Jasmine is a behavior-driven development (BDD) framework for testing JavaScript code.
-
-  section
     p Behavior driven development uses examples to illustrate behavior.
 
   section
@@ -65,11 +64,9 @@ include ../includes/mixins
     p A test suite begins with a call to the global Jasmine function
       strong  describe()
       | with two parameters: a string and a function.
-
-  section
-    p
-      | The string is a name or title for a spec suite – usually what is being tested and function is a block of code
-      | that implements the suite.
+    ul 
+      li Name or title for a spec suite – usually what is being tested
+      li Block of code that implements the suite.
 
   section
     pre.
@@ -90,9 +87,10 @@ include ../includes/mixins
     p Specs are defined by calling the global Jasmine function
       strong  it()
       | which, like describe(), takes a string and a function.
-
-  section
-    p The string is the title of the spec and the function is the spec, or test.
+    
+    ul 
+      li Title of the spec
+      li The spec, or test.
 
   section
     pre.
@@ -135,16 +133,14 @@ include ../includes/mixins
     h2 Expectations
 
   section
-    p Expectations are built with the function 'expect' which takes a value, called the actual.
+    p Expectations are built with the function 
+    strong expect()
+    | which takes a value, called the actual.
 
-  section
-    p It is chained with a Matcher function, which takes the expected value.
-
-  section
-    p Each matcher implements a boolean comparison between the actual value and the expected value.
-
-  section
-    p The matcher is responsible for reporting to Jasmine if the expectation is true or false.
+    ul 
+      li It is chained with a Matcher function, which takes the expected value.
+      li Each matcher implements a boolean comparison between the actual value and the expected value.
+      li The matcher is responsible for reporting to Jasmine if the expectation is true or false.
 
   section
     pre.
@@ -184,8 +180,6 @@ include ../includes/mixins
 
   section
     p Lets start by mocking a module that we'll be testing.
-
-  section
     p Angular provides angular.mock.module (aliased as 'module' on window) to mock Angular modules
 
   section
@@ -204,8 +198,6 @@ include ../includes/mixins
 
   section
     p Now that we've mocked the module that contains the component we wish to test, we need to mock the component itself.
-
-  section
     p More than likely, our component will have dependencies that are required to test it.
 
   section
@@ -237,8 +229,6 @@ include ../includes/mixins
 
   section
     p Lets break this down and discuss what's going on in each step.
-
-  section
     p To instantiate our controller for testing, we'll need to inject the $controller service and $rootScope service.
 
   section
@@ -319,8 +309,6 @@ include ../includes/mixins
 
   section
     p Now that we have an instance of our controller, we can start testing it.
-
-  section
     pre.
       <code class="js" data-trim>
       it('should be able to instantiate the controller', function () {
