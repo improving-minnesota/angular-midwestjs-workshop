@@ -1,11 +1,11 @@
-# Lab Eight - Directives
+# Lab Five - Directives
 
 &nbsp;
 ## Checkout the lab branch
 * In your console:
 
 ```
-git checkout lab-8-directives
+git checkout lab-5-directives
 git pull
 ```
 &nbsp;
