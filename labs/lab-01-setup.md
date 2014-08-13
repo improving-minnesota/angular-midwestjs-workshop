@@ -1,5 +1,10 @@
 # Lab one - Setup and install dependencies
 
+### Prerequisites
+* [git](http://git-scm.com/book/en/Getting-Started-Installing-Git)
+* [node](http://nodejs.org/download/)
+* text-editor
+
 ### Ensure all global dependencies have been installed
 
 * [Grunt](https://github.com/cowboy/grunt) `npm install -g grunt-cli`
@@ -8,16 +13,22 @@
 
 ### Checkout the Github repository
 
+- Create project directory
+
+```
+mkdir timesheet-midwestjs-workshop
+```
+
 - Checkout project from Github
 
 ```
-git clone https://github.com/objectpartners/angular-timesheet.git
+git clone https://github.com/objectpartners/timesheet-midwestjs-workshop.git
 ```
 
 - You should get output similar to below:
 
 ```javascript
-Cloning into 'angular-training'...
+Cloning into 'timesheet-midwestjs-workshop'...
 remote: Counting objects: 3003, done.
 remote: Compressing objects: 100% (1458/1458), done.
 remote: Total 3003 (delta 1413), reused 2684 (delta 1256)
@@ -29,7 +40,7 @@ Checking connectivity... done.
 - Change directories to the lab main directory.
 
 ```
-cd angular-timesheet
+cd timesheet-midwestjs-workshop
 ```
 
 - Now let's checkout the `lab-1-setup` branch.
