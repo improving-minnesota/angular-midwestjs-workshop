@@ -10,6 +10,7 @@
 * [Grunt](https://github.com/cowboy/grunt) `npm install -g grunt-cli`
 * [Bower](http://twitter.github.com/bower/) `npm install -g bower`
 * [Karma](https://github.com/karma-runner/karma/) `npm install -g karma`
+* Nodemon 'npm install -g nodemon'
 
 ### Checkout the Github repository
 
