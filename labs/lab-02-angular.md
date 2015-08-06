@@ -123,7 +123,6 @@ grunt watch:development
 
 - Do you wonder how that is happening?
   - Open **client/assets/templates/index.html** and look at the model binding in the template.
-  - You'll have many more chances to take advantage of this during the next few days.
 
 ### Commit your changes to Git
 ```
