@@ -8,18 +8,29 @@ include ../includes/mixins
     h1 NPM
 
   section
-    p NPM is the official package manager for Node.js
+    p
+      strong  NPM
+      |  is the official package manager for Node.js.
 
   section
-    ul 
-      li Runs through the command line
-      li Manages dependencies for an application
-      li Installs Node.js applications that are available on the npm registry
-      li Similar to Maven and Maven Central
+    p NPM runs through the command line and manages dependencies for an application.
 
   section
-    p Most, if not all, node projects contain a package.json file in the root project.
-    p This file exposes metadata about your application as well as it's dependencies.
+    p It also allows users to install Node.js applications that are available on the NPM registry.
+
+  section
+    p For those who are familiar with dependency management tools and artifact repositories like Maven and Maven Central, NPM is similar.
+
+  section
+    p One distinct difference between the two is that NPM does not manage build processes like Maven does.
+
+  section
+    p Most, if not all, Node.js projects contain a
+      strong  package.json
+      |  file in the root project.
+
+  section
+    p This file exposes metadata about your application as well as its dependencies.
 
   section
     pre.
@@ -38,18 +49,25 @@ include ../includes/mixins
       </code>
 
   section
-    p When checking out a fresh project from GitHub, simply run 'npm install' to install all the dependencies required to run the project.
+    p When checking out a fresh project from GitHub, simply run
+      strong  'npm install'
+      |  to install all the dependencies required to run the project.
 
   section
     h1 Bower
 
   section
-    ul 
-      li Bower is a package manager for front end dependencies.
-      li We'll be using Bower in our project to manage libraries that we use in our Angular application, such as Angular itself.
+    p
+      strong  Bower
+      |  is a package manager for front end dependencies.
 
   section
-    p Like NPM, bower requires a bower.json file in the root of the project that specifies metadata about our project as well as its dependencies.
+    p We'll be using Bower in our project to manage libraries that we use in our Angular application, such as Angular itself.
+
+  section
+    p Like NPM, Bower requires a
+      strong  bower.json
+      |  file in the root of the project that specifies metadata about our project as well as its dependencies.
 
   section
     pre.
@@ -67,22 +85,27 @@ include ../includes/mixins
       </code>
 
   section
-    p When checking out a fresh project from GitHub, simply run 'bower install' to install all the client side dependencies required by the client application.
+    p When checking out a fresh project from GitHub, simply run
+      strong  'bower install'
+      |  to install all the client-side dependencies required by the client application.
 
   section
-    p Aside from using NPM and Bower to install our dependencies, we wont focus much on NPM or Bower in this training class.
+    p Aside from using NPM and Bower to install our dependencies, we won't focus much on NPM or Bower in this training class.
+
+  section
     p You can visit the NPM and Bower websites to learn more about them.
-    ul 
-      li 
-        a(href="http://bower.io") bower.io
-      li 
-        a(href="https://www.npmjs.org") npmjs.org
+    p
+      a(href="http://bower.io") bower.io
+    p
+      a(href="https://www.npmjs.org") npmjs.org
 
   section
     h1 Grunt
 
   section
-    p Grunt is a JavaScript Task Runner.
+    p
+      strong  Grunt
+      |  is a JavaScript Task Runner.
 
   section
     p We'll be using Grunt to automate many of the project build tasks associated with a web application.
@@ -90,7 +113,7 @@ include ../includes/mixins
   section
     p
       | The less work we have to do when performing repetitive tasks like minification, compilation, unit
-      | testing, linting, and etc, the easier our life becomes.
+      | testing, linting, etc., the easier our life becomes.
 
   section
     p
@@ -110,7 +133,10 @@ include ../includes/mixins
     p In this training class, you'll be building a Angular application that tracks employee timesheets across different projects.
 
   section
-    p Lets take a look.
+    p To help speed things along so we can focus on the really important parts like Angular, we've created the base project structure for you.
+
+  section
+    p Let's take a look.
 
   section
     h1 Lab 01

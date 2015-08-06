@@ -21,14 +21,14 @@ include ../includes/mixins
     p For this reason any code written in JavaScript needs to come with a strong set of tests.
 
   section
-    p The Angular team has built many features into Angular which makes testing your applications easy.
+    p The Angular team has built many features into Angular that make testing your applications easy.
 
   section
     h3 There is no excuse for not testing
 
   section
     p You'll more than likely spend half of your time in labs testing your solutions.
-    p .. and this is a good thing.
+    p ...and this is a good thing.
 
   section
     h1 Karma
@@ -36,16 +36,18 @@ include ../includes/mixins
   section
     h2 Karma
     ul
-      li Essentially a tool that spawns a web server to ..
-      li Execute your source code
-      li Against your test code
-      li Within each of the browsers you configure.
+      li Essentially a tool that spawns a web server to execute your
+        strong  source code
+        |  against your
+        strong  test code
+        |  within
+        strong  each of the browsers
+        |  you configure
 
   section
-    p Test Results
-    ul 
-      li Examined and displayed via the command line or 'debug' tab in browser.
-      li Easy to see which browsers and tests passed or failed
+    p
+      | The results for each test against each browser are examined and displayed via the command line
+      | to the developer such that they can see which browsers and tests passed or failed.
 
   section
     p We'll use Karma with Grunt to integrate tests directly into our development workflow.
@@ -54,7 +56,11 @@ include ../includes/mixins
     h1 Jasmine
 
   section
-    p Jasmine is a behavior-driven development (BDD) framework for testing JavaScript code.
+    p Jasmine is a
+      strong  behavior-driven development (BDD)
+      |  framework for testing JavaScript code.
+
+  section
     p Behavior driven development uses examples to illustrate behavior.
 
   section
@@ -63,10 +69,12 @@ include ../includes/mixins
   section
     p A test suite begins with a call to the global Jasmine function
       strong  describe()
-      | with two parameters: a string and a function.
-    ul 
-      li Name or title for a spec suite – usually what is being tested
-      li Block of code that implements the suite.
+      |  with two parameters: a string and a function.
+
+  section
+    p
+      | The string is a name or title for a spec suite – usually what is being tested and function is a block of code
+      | that implements the suite.
 
   section
     pre.
@@ -86,11 +94,12 @@ include ../includes/mixins
   section
     p Specs are defined by calling the global Jasmine function
       strong  it()
-      | which, like describe(), takes a string and a function.
-    
-    ul 
-      li Title of the spec
-      li The spec, or test.
+      |  which, like
+      strong  describe()
+      | , takes a string and a function.
+
+  section
+    p The string is the title of the spec and the function is the spec, or test.
 
   section
     pre.
@@ -127,20 +136,30 @@ include ../includes/mixins
 
   section
     p Jasmine also provides us with test life-cycle functions that we can use to set up and/or tear down our test environment:
-      strong  beforeEach() and afterEach()
+      strong  beforeEach()
+      |  and
+      strong  afterEach()
 
   section
     h2 Expectations
 
   section
-    p Expectations are built with the function 
-    strong expect()
-    | which takes a value, called the actual.
+    p Expectations are built with the function
+      strong  expect()
+      |, which takes a value, called the
+      strong  actual
+      |.
 
-    ul 
-      li It is chained with a Matcher function, which takes the expected value.
-      li Each matcher implements a boolean comparison between the actual value and the expected value.
-      li The matcher is responsible for reporting to Jasmine if the expectation is true or false.
+  section
+    p It is chained with a
+      strong  matcher
+      |  function, which takes the expected value.
+
+  section
+    p Each matcher implements a boolean comparison between the actual value and the expected value.
+
+  section
+    p The matcher is responsible for reporting to Jasmine if the expectation is true or false.
 
   section
     pre.
@@ -159,8 +178,9 @@ include ../includes/mixins
 
   section
     p
-      | Instead of our tests talking to real services, it will often suffice to speak to the 'mock' versions
-      | of the services, which will respond to calls accurately, but rather unintelligently.
+      | Instead of our tests talking to real services, it will often suffice to speak to the
+      strong  mock
+      |  versions of the services, which will respond to calls accurately, but rather unintelligently.
 
   section
     p
@@ -168,19 +188,25 @@ include ../includes/mixins
       | execution of our test runner in its own potentially sandboxed environment.
 
   section
-    p Let us use the $location service as an example.
+    p Let's use the
+      strong  $location
+      |  service as an example.
 
   section
     p
-      | If one of of our tests changes the location of the address bar during testing, this could potentially disrupt
+      | If one of our tests changes the location of the address bar during testing, this could potentially disrupt
       | the entire test process.
 
   section
     p Angular provides tools and services to mock different kinds of components when testing.
 
   section
-    p Lets start by mocking a module that we'll be testing.
-    p Angular provides angular.mock.module (aliased as 'module' on window) to mock Angular modules
+    p Let's start by mocking a module that we'll be testing.
+
+  section
+    p Angular provides
+      strong  angular.mock.module
+      |  (aliased as 'module' on window) to mock Angular modules
 
   section
     pre.
@@ -191,17 +217,23 @@ include ../includes/mixins
 
       </code>
 
-    p Why do we mock the app.controllers module inside a beforeEach statement?
+    p Why do we mock the app.controllers module inside a
+      strong  beforeEach()
+      |  statement?
 
   section
     p We want to make sure that we're starting with a blank slate so that changes made by other tests don't interfere with the current test.
 
   section
     p Now that we've mocked the module that contains the component we wish to test, we need to mock the component itself.
+
+  section
     p More than likely, our component will have dependencies that are required to test it.
 
   section
-    p We use the angular.mock.inject (aliased as 'inject' on window) to inject mock dependencies.
+    p We use
+      strong  angular.mock.inject
+      |  (aliased as 'inject' on window) to inject mock dependencies.
 
   section
     pre.
@@ -229,10 +261,20 @@ include ../includes/mixins
 
   section
     p Lets break this down and discuss what's going on in each step.
-    p To instantiate our controller for testing, we'll need to inject the $controller service and $rootScope service.
 
   section
-    p The inject function is going to inject $rootScope and the $controller services that we need to build an instance of our controller.
+    p To instantiate our controller for testing, we'll need to inject the
+      strong  $controller
+      |  service and
+      strong  $rootScope
+      |  service.
+
+  section
+    p The inject function is going to inject
+      strong  $rootScope
+      |  and the
+      strong  $controller
+      |  services that we need to build an instance of our controller.
     br
     pre.
       <code class="js" data-trim>
@@ -258,7 +300,9 @@ include ../includes/mixins
       </code>
 
   section
-    p Then, we'll use the $controller service to instantiate our controller and supply the dependencies it needs.
+    p Then, we'll use the
+      strong  $controller
+      |  service to instantiate our controller and supply the dependencies it needs.
     br
     pre.
       <code class="js" data-trim>
@@ -309,6 +353,8 @@ include ../includes/mixins
 
   section
     p Now that we have an instance of our controller, we can start testing it.
+
+  section
     pre.
       <code class="js" data-trim>
       it('should be able to instantiate the controller', function () {

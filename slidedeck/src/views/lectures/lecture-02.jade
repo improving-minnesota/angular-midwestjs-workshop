@@ -128,46 +128,62 @@ include ../includes/mixins
         </code>
 
   section
-    p The compiler($compile) is an Angular service that traverses the DOM looking for directives.
+    p Now, back to the compiler
+
+  section
+    p The
+    strong  compiler
+    |  is an Angular service which traverses the DOM looking for directives.
 
   section
     p The compilation process happens in two phases.
 
   section
-    h3 Compile
+    h3 Link
     p Traverse the DOM and collect all of the directives.
 
   section
-    h3 Link
-    p Combine the directives with a scope and create a live view.
-    ul
-      li Any changes in the scope model are reflected in the view.
-      li User interactions with the view are reflected in the scope model.
+    h3 Compile
+    p
+      | Combine the directives with a scope and produce a live view. Any changes in the scope model are
+      | reflected in the view, and any user interactions with the view are reflected in the scope model.
+
+  section
+    p This makes the scope model the single source of truth.
 
   section
     h2 Scope
 
   section
-    p Scope is an object that refers to the application model.  
-    p Execution context for expressions.
-    p Arranged in hierarchical structure which mimic the DOM structure of the application.
+    p
+      strong  Scope
+      |  is an object that refers to the application model.  It is an execution context for expressions.
 
   section
     img.no-style.slide-image(src="/angular-midwestjs-workshop/assets/img/nested-scope.png")
 
   section
     h3 Communicating with the outside world
-    ul
-      li $scope.$apply : Connect the outside into the Ng world.
-      li $scope.$parse : Gets you two-way binding.
-      li $scope.$watch : Helps you react to changes. 
+    p
+      strong  $scope.$apply:
+      |  Connect the outside into the Angular world.
+    p
+      strong  $scope.$parse:
+      |  Gets you two-way binding.
+    p
+      strong  $scope.$watch:
+      |  Helps you react to changes.
 
   section
-    p Let's see the HTML compiler in action
+    p Let's see the HTML compiler in action.
 
   section
-    p ng-init evaluates a JavaScript expression on scope.
-    p ng-bind takes a variable on scope and sets the content of the element to it.
+    p
+      strong  ng-init
+      |  evaluates a JavaScript expression on scope.
+    p
+      strong  ng-bind
+      |  takes a variable on scope and sets the content of the element to it.
     br
     pre.
       <code class="html" data-trim>
@@ -218,10 +234,12 @@ include ../includes/mixins
     h1 Controllers
 
   section
-    p In Angular, a controller is a JavaScript constructor function that is used to augment the Angular Scope.
+    p In Angular, a
+      strong  controller
+      |  is a JavaScript constructor function that is used to augment the Angular Scope.
 
   section
-    p You create controllers on a module.
+    p You can create controllers on a module.  The first argument is the controller name, and the second is the constructor function.
     br
     pre.
       <code class="js" data-trim>
@@ -249,7 +267,9 @@ include ../includes/mixins
       </code>
 
   section
-    p You can associate controllers with scope objects implicitly via the ngController directive.
+    p You can associate controllers with scope objects implicitly via the
+      strong  ngController
+      |  directive.
 
   section
     p Controller
@@ -284,10 +304,12 @@ include ../includes/mixins
       </code>
 
   section
-    p Lets add some functionality to scope and show off data binding.
+    p Let's add some functionality to scope and show off data binding.
 
   section
-    p The $interval service executes a function on scope in the supplied interval.
+    p The
+      strong  $interval
+      |  service executes a function on scope in the supplied interval.
     pre.
       <code class="js" data-trim>
       angular.module('app.controllers', [])
@@ -324,10 +346,14 @@ include ../includes/mixins
       | time document.readyState is set to 'complete'.
 
   section
-    p At this point Angular looks for the ng-app directive which designates your application root.
+    p At this point Angular looks for the
+      strong  ng-app
+      |  directive which designates your application root.
 
   section
-    p Typically the ng-app directive is used on the root html or body elements so that the entire document is traversed and linked by the compiler.
+    p Typically the
+      strong  ng-app
+      |  directive is used on the root html or body elements so that the entire document is traversed and linked by the compiler.
     br
     pre.
       <code class="html" data-trim>
@@ -339,29 +365,42 @@ include ../includes/mixins
 
   section
     h1 Providers
-
   section
-    p The AngularJS injector creates two types of objects:
-    ul
-      li Specialized Objects
-      li Services
+    p The AngularJS injector creates two types of objects,
+      strong  specialized objects
+      |  and
+      strong  services.
 
   section
     h3 Specialized Objects
-    p Conform to a specific Angular framework API.
-    p Controllers, directives, filters or animations.
-
+    p
+      strong Specialized objects
+      |  conform to a specific Angular framework API.
+  section
+    p An example of these specialized objects are controllers, directives, filters or animations.
   section
     h3 Services
-    p Objects whose API is defined by the developer (you).
-    p 5 Recipe Types
-
+    p
+      strong Services
+      |  are objects whose API is defined by the developer writing the service.
+  section
+    p The injector needs to know how to create these objects.
+  section
+    p You tell the injector by registering a
+      strong  recipe
+      |  for creating your object.
+  section
+    p There are five recipe types.
   section
     h2 Value Recipe
-
   section
-    p Key,Value Pair
-    p Often used for specifying configuration during runtime.
+    p You can use the
+      strong  Value recipe
+      |  to create named values that are injectable.
+  section
+    p You cannot inject dependencies into a Value recipe.
+  section
+    p The Value recipe is often used for specifying configuration values.
     br
     pre.
       <code class="js" data-trim>
@@ -370,46 +409,36 @@ include ../includes/mixins
         .controller('MyCtrl', function(apiUrl) {
           // Do something with the apiUrl
         });
-
       </code>
-
   section
     h2 Constant Recipe
-
   section
-    p Available during configuration phase.
+    p  Since the config function runs in the configuration phase when no services are available,
+      | it doesn't have access even to simple value objects created via Value recipe.
+  section
+    p Since simple values don't have dependencies or configuration,
+      | it is often handy to make them available in both the configuration and run phases.
+    p This is what the
+      strong  Constant recipe
+      |  is for.
+  section
     pre.
       <code class="js" data-trim>
       angular.module('app')
         .constant('apiUrl', '/api');
-        
       </code>
-
-  section
-    h2 Providers
-    p Core of the Angular services
-    p Used by the injector 
-
-  section
-    p Let's look at an example:
-    pre.
-      <code class="js" data-trim>
-      .provider('authorization', {
-
-        $get: function ($injector, authentication, securityContext) {
-          return {
-            requireAuthenticatedUser: function () {
-              // implementation for requiring an authenticated user.
-            }
-          };
-        }
-      });
-
-      </code>
-
   section
     h2 Factory Recipe
-
+  section
+    p The
+      strong  Factory recipe
+      |  builds on top of the Value recipe, but adds the following abilities:
+    ul
+      li the ability to use other services (have dependencies)
+      li service initialization
+      li delayed/lazy initialization
+  section
+    p The Factory recipe constructs a new service using a function with zero or more arguments (these are dependencies on other services).
   section
     p We can use the Factory recipe to provide utility functions that have other dependencies.
     br
@@ -427,32 +456,93 @@ include ../includes/mixins
           };
           return authentication;
         });
-
       </code>
-
   section
     h2 Service Recipe
-
   section
-    p Using the service recipe, we just provide the constructor function.
+    p The
+      strong  Service recipe
+      |  produces a service just like the Value or Factory recipes, but it does so by invoking a constructor with the new operator.
+  section
+    p First, let's see how we can implement a Service recipe with a factory.
+    br
+    pre.
+      <code class="js" data-trim>
+      function AuthenticationService(myDependency) {
+        this.loginAttempts = 0;
+        this.login = function(username, password) {
+          this.loginAttempts++;
+          // Perform login functionality with myDependency
+        };
+        this.logout = function(username, password) {
+          this.loginAttempts = 0;
+          // Perform logout functionality with myDependency
+        };
+      };
+      </code>
+  section
+    p With the AuthenticationService constructor function we just created, we can then register the new service.
+    pre.
+      <code class="js" data-trim>
+      angular.module('app', [])
+        .factory('authentication', function (myDependency) {
+          // The service recipe does this for you
+          return new AuthenticationService(myDependency);
+        });
+      </code>
+  section
+    p Using the Service recipe, we can accomplish the same thing with less code.
     br
     pre.
       <code class="js" data-trim>
       angular.module('app', [])
         .service('authentication', function(myDependency) {
           this.loginAttempts = 0;
-
           this.login = function(username, password) {
             this.loginAttempts++;
             // Perform login functionality with myDependency
           };
-
           this.logout = function(username, password) {
             this.loginAttempts = 0;
             // Perform logout functionality with myDependency
           };
         });
-
+      </code>
+  section
+    p Service recipes follow a design pattern called
+      strong  constructor injection.
+  section
+    h2 Providers
+  section
+    p The
+      strong  Provider recipe
+      |  is the core recipe type; all the other recipe types are just syntactic sugar on top of it.
+  section
+    p It's the most verbose recipe with the most abilities, but for most services it's overkill.
+  section
+    p You should use the Provider recipe only when you want to expose an API for application-wide configuration before the application starts.
+  section
+    p The Provider recipe is syntactically defined as a custom type that implements a
+      strong  $get
+      |  method.
+  section
+    p This method is a factory function just like the one we use in Factory recipe.
+    p In fact, if you define a Factory recipe, an empty Provider type with the
+      Strong  $get
+      |  method set to your factory function is automatically created under the hood.
+  section
+    p Let's look at an example:
+    pre.
+      <code class="js" data-trim>
+      .provider('authorization', {
+        $get: function ($injector, authentication, securityContext) {
+          return {
+            requireAuthenticatedUser: function () {
+              // implementation for requiring an authenticated user.
+            }
+          };
+        }
+      });
       </code>
 
   section
