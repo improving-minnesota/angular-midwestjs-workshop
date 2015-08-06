@@ -30,11 +30,11 @@ git clone https://github.com/objectpartners/timesheet-midwestjs-workshop.git
 
 ```javascript
 Cloning into 'timesheet-midwestjs-workshop'...
-remote: Counting objects: 3003, done.
-remote: Compressing objects: 100% (1458/1458), done.
-remote: Total 3003 (delta 1413), reused 2684 (delta 1256)
-Receiving objects: 100% (3003/3003), 1.44 MiB | 1.15 MiB/s, done.
-Resolving deltas: 100% (1413/1413), done.
+remote: Counting objects: 1993, done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 1993 (delta 66), reused 57 (delta 57), pack-reused 1918
+Receiving objects: 100% (1993/1993), 306.19 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (901/901), done.
 Checking connectivity... done.
 ```
 
