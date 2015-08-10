@@ -400,7 +400,7 @@ it('should transclude the directive element contents', function () {
 ```
 
 - Inject our `'timesheet.directives'` module into the controller.
-- Open **client/src/app/timesheets/controllers.js** and find the `TODO` at the top of the file.
+- Find the `TODO` at the top of **client/src/app/timesheets/controllers.js**
 
 - Did you notice?
   - We registered a click handler and bound `progressClicked()` from our isolate scope.
