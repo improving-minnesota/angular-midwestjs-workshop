@@ -167,7 +167,7 @@ $scope.remove = function remove (employee) {
     });
 };
 
-$scope.restore = function restore (employee) {  
+$scope.restore = function restore (employee) {
   data.restore('employees', employee)
     .then(function (restored) {
       console.log('success!');
@@ -250,7 +250,7 @@ it('should set the result to the employees', function () {
 
 ###### Test removing an employee sends a PUT request
 
-- Locate the `TODO` near line #82 and replace it a test that :
+- Locate the `TODO` near line #82 and replace it with a test that :
   - Flushes the `$httpBackend` service immediately so that the original request to get the employee list doesn't corrupt our test.
   - Sets an expectation of a PUT request to the url for the `employee` test object.
     - Respond with a `200` status.
@@ -518,7 +518,7 @@ $scope.remove = function remove (timesheet) {
     .then(function () {
       console.log('success !');
     })
-    .catch(function (x) {  
+    .catch(function (x) {
       timesheet.deleted = false;
       console.log('error ' + x);
     });

@@ -29,9 +29,9 @@ grunt serve:development
 - Let's take advantage of that and add some form validation to the employees form.
 - Open **client/assets/templates/app/employees/form.html**
 
-- We need to tell Angular that we are NOT using HTML5 validation in our form, but will be using Angular's validation. 
+- We need to tell Angular that we are NOT using HTML5 validation in our form, but will be using Angular's validation.
 
-- Find the ```<form>``` tag and add the `novalidate` attribute.  
+- Find the ```<form>``` tag and add the `novalidate` attribute.
 
 ```xml
 <form class="form-horizontal" novalidate name="employeeForm">
@@ -120,16 +120,16 @@ data.page('employees', query)
   - Set the `page` to the value of `pageConfig.page`.
   - Set the `items-per-page` to the value of `pageConfig.limit`
   - We also want to show the `boundary-links` and have the buttons `rotate`.
-  - Lastly, when a page is selected, we want to call teh `requestEmployees(page)` function on our controller's scope.
+  - Lastly, when a page is selected, we want to call the `requestEmployees(page)` function on our controller's scope.
 
 ```xml
 <div class="text-center">
   <div pagination
-    total-items="pageConfig.totalItems" 
-    ng-model="pageConfig.page" 
-    items-per-page="pageConfig.limit" 
-    boundary-links="true" 
-    rotate="true" 
+    total-items="pageConfig.totalItems"
+    ng-model="pageConfig.page"
+    items-per-page="pageConfig.limit"
+    boundary-links="true"
+    rotate="true"
     ng-change="requestEmployees(page)">
   </div>
 </div>
@@ -167,11 +167,11 @@ data.page('employees', query)
 ```xml
 <div class="text-center">
   <div pagination
-    total-items="pageConfig.totalItems" 
-    ng-model="pageConfig.page" 
-    items-per-page="pageConfig.limit" 
-    boundary-links="true" 
-    rotate="true" 
+    total-items="pageConfig.totalItems"
+    ng-model="pageConfig.page"
+    items-per-page="pageConfig.limit"
+    boundary-links="true"
+    rotate="true"
     ng-change="requestTimesheets(page)">
   </div>
 </div>
@@ -267,7 +267,7 @@ $scope.$apply();
   - We then tell the $compile service to process the registered element.
   - Angular gives us a linking function as a result which we immediately call with our test `$scope`.
   - After our element has been compiled and linked, we tell Angular to run its digest cycle and apply it to our test '$scope'.
-  - Once that is complete, we have a small section of DOM that is fully 'Angular-aware' and can be tested.  
+  - Once that is complete, we have a small section of DOM that is fully 'Angular-aware' and can be tested.
 
 ###### Test the header is set
 - Look for the `TODO` near line #42.
@@ -345,7 +345,6 @@ it('should transclude the directive element contents', function () {
 ###### Write the directive
 
 - Open **client/src/directives/timesheet.js**
-- Notice that your teammates have already created the module for you. Aren't they awesome?
 - Our directive's requirements are:
   - The directive will replace the DOM elements that call it.
   - We need an isolate scope with the following properties.
@@ -399,6 +398,9 @@ it('should transclude the directive element contents', function () {
   </div>
 </div>
 ```
+
+- Inject our `'timesheet.directives'` module into the controller
+- Open **client/src/app/timesheets/controllers.js** and find the `TODO` at the top of the file.
 
 - Did you notice?
   - We registered a click handler and bound `progressClicked()` from our isolate scope.
