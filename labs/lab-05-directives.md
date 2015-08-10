@@ -399,7 +399,7 @@ it('should transclude the directive element contents', function () {
 </div>
 ```
 
-- Inject our `'timesheet.directives'` module into the controller
+- Inject our `'timesheet.directives'` module into the controller.
 - Open **client/src/app/timesheets/controllers.js** and find the `TODO` at the top of the file.
 
 - Did you notice?
