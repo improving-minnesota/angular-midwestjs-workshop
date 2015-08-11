@@ -173,7 +173,7 @@ data.page('employees', query)
     items-per-page="pageConfig.limit"
     boundary-links="true"
     rotate="true"
-    ng-change="requestTimesheets(page)">
+    ng-change="requestTimesheets(pageConfig.page)">
   </div>
 </div>
 ```
@@ -271,7 +271,7 @@ $scope.$apply();
   - Once that is complete, we have a small section of DOM that is fully 'Angular-aware' and can be tested.
 
 ###### Test the header is set
-- Look for the `TODO` near line #42.
+- Look for the `TODO` near line #49.
 - Add the below test to check that the directive adds a `<h4>` tag.
 
 ```javascript
@@ -301,7 +301,7 @@ it('should respond to changes', function () {
 ###### Test the transclusion
 
 - Now we want to verify that any DOM elements that we wrap with our directive appear in the second column.
-- Find the `TODO` near line #55 and add this test.
+- Find the `TODO` near line #67 and add this test.
 
 ```javascript
 it('should transclude the directive element contents', function () {
