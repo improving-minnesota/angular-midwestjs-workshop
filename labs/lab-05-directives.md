@@ -54,6 +54,7 @@ ng-disabled="employeeForm.$invalid"
 - When it is valid, `employeeForm.$invalid` will resolve to false, so Angular will remove the attribute, `disabled` from the `<button>`.
 
 - Now start the application and see what happens when you make the form valid and invalid.
+- Security is now enabled. We have two users: user and admin, with both passwords set to `password`
 - Feel free to play with different values for the validation parameters and see the effects.
 - Pretty neat, huh?
 
