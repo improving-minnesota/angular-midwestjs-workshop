@@ -206,7 +206,7 @@ $scope.requestEmployees(1);
 - Since these are unit tests, we don't want to actually make real requests to the server when testing our controller methods.
 - Angular provides us with the `$httpBackend` mock service so that we can intercept calls to the server, track them, and set up responses that we can use in our tests.
 
-- Locate the `TODO` near line #58 and tell the `$httpBackend` service how to respond to a request for a list of users:
+- Locate the `TODO` near line #56 and tell the `$httpBackend` service how to respond to a request for a list of users:
 
 ```javascript
 $httpBackend.when('GET', '/users').respond(200, [{username: 'testUser'}]);
@@ -269,7 +269,7 @@ it('should send a remove request for the specified employee', function () {
 
 ###### Set a response for a successful remove request
 
-- Locate the `TODO` near line #92 and set the response to:
+- Locate the `TODO` near line #95 and set the response to:
 
 ```javascript
 $httpBackend.when('PUT', '/users/' + employee._id).respond(200);
@@ -277,7 +277,7 @@ $httpBackend.when('PUT', '/users/' + employee._id).respond(200);
 
 ###### Test the behavior of a calling `$scope.remove()`
 
-- Near line #95, replace the `TODO` with the following test:
+- Near line #99, replace the `TODO` with the following test:
   - Call the remove function on `$scope`.
   - Flush the mock http backend.
   - Test that the `deleted` flag is set to true on the `employee`.
@@ -292,7 +292,7 @@ it('should set the employee to deleted for the ui', function () {
 
 ###### Set a response for a remove request with an error
 
-- Locate the `TODO` near line #105 and set the response:
+- Locate the `TODO` near line #112 and set the response:
 
 ```javascript
 $httpBackend.when('PUT', '/users/' + employee._id).respond(500);
@@ -300,7 +300,7 @@ $httpBackend.when('PUT', '/users/' + employee._id).respond(500);
 
 ###### Test the remove request that has errors
 
-- Find the `TODO` near line #108 and replace it with a test that:
+- Find the `TODO` near line #116 and replace it with a test that:
   - Calls the remove function on scope.
   - Flushes the backend and tests that the `employee.deleted` flag was not set to `true`.
 
@@ -314,7 +314,7 @@ it('should set deleted to false for the employee in the ui', function () {
 
 ###### Test restoring an employee sends a PUT request
 
-- Locate the `TODO` near line #122 and replace it with a test that:
+- Locate the `TODO` near line #131 and replace it with a test that:
   - Flushes the backend immediately to clear the `$httpBackend` service.
   - Sets an expectation for a PUT request to the url corresponding to the `employee` object.
     - Respond with a status of `200`.
@@ -332,12 +332,12 @@ it('should send a restore request for the specified employee', function () {
 
 ###### Test restoring an employee with success
 
-- Locate the `TODO` near line #132 and configure a successful response:
+- Locate the `TODO` near line #143 and configure a successful response:
 
 ```javascript
 $httpBackend.when('PUT', '/users/' + employee._id).respond(200);
 ```
-- Now locate the `TODO` near line #135 and test that the employee is restored:
+- Now locate the `TODO` near line #147 and test that the employee is restored:
   - Call the `restore` function on scope
   - Flush the http backend service.
   - Test that the `employee.deleted` flag was set to `false`.
@@ -352,13 +352,13 @@ it('should set the employee to not deleted for the ui', function () {
 
 ###### Test restoring an employee that results in an error
 
-- Locate the `TODO` near line #145 and set an error response for a restore request:
+- Locate the `TODO` near line #159 and set an error response for a restore request:
 
 ```javascript
 $httpBackend.when('PUT', '/users/' + employee._id).respond(500);
 ```
 
-- Next, find the `TODO` near line #148 and test the error:
+- Next, find the `TODO` near line #163 and test the error:
   - Call the `restore()` function on scope.
   - Flush the http backend.
   - Test that the `employee.deleted` flag was set to `true`.
@@ -377,7 +377,7 @@ it('should set deleted to true for the employee in the ui', function () {
 - You should have output similar to:
 
 ```
-Chrome 33.0.1750 (Mac OS X 10.9.2): Executed 19 of 19 SUCCESS (0.127 secs / 0.121 secs)
+Chrome 44.0.2403 (Mac OS X 10.10.3): Executed 19 of 19 SUCCESS (0.078 secs / 0.074 secs)
 ```
 
 &nbsp;
@@ -548,7 +548,7 @@ $scope.requestTimesheets(1);
 
 &nbsp;
 ###### Once again, the code below is here to help if you need it.
-- (near line #68)
+- (near line #66)
 
 ```javascript
 $httpBackend.when('GET', '/users/all/timesheets').respond(200, [{name: 'testTimesheet'}]);
@@ -586,13 +586,13 @@ it('should send a remove request for the specified timesheet', function () {
 });
 ```
 
-- (near line #101)
+- (near line #105)
 
 ```javascript
 $httpBackend.when('PUT', '/users/1234567890/timesheets/' + timesheet._id).respond(200);
 ```
 
-- (near line #104)
+- (near line #109)
 
 ```javascript
 it('should set the timesheet to deleted for the ui', function () {
@@ -602,13 +602,13 @@ it('should set the timesheet to deleted for the ui', function () {
 });
 ```
 
-- (near line #114)
+- (near line #121)
 
 ```javascript
 $httpBackend.when('PUT', '/users/1234567890/timesheets/' + timesheet._id).respond(500);
 ```
 
-- (near line #117)
+- (near line #125)
 
 ```javascript
 it('should set deleted to false for the timesheet in the ui', function () {
@@ -618,7 +618,7 @@ it('should set deleted to false for the timesheet in the ui', function () {
 });
 ```
 
-- (near line #131)
+- (near line #141)
 
 ```javascript
 it('should send a restore request for the specified timesheet', function () {
@@ -629,13 +629,13 @@ it('should send a restore request for the specified timesheet', function () {
 });
 ```
 
-- (near line #141)
+- (near line #153)
 
 ```javascript
 $httpBackend.when('PUT', '/users/1234567890/timesheets/' + timesheet._id).respond(200);
 ```
 
-- (near line #144)
+- (near line #157)
 
 ```javascript
 it('should set the timesheet to not deleted for the ui', function () {
@@ -645,13 +645,13 @@ it('should set the timesheet to not deleted for the ui', function () {
 });
 ```
 
-- (near line #154)
+- (near line #169)
 
 ```javascript
 $httpBackend.when('PUT', '/users/1234567890/timesheets/' + timesheet._id).respond(500);
 ```
 
-- (near line #157)
+- (near line #173)
 
 ```javascript
 it('should set deleted to true for the timesheet in the ui', function () {

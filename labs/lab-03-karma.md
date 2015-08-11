@@ -67,8 +67,8 @@ grunt karma:unit
 Running "karma:unit" (karma) task
 INFO [karma]: Karma v0.12.0 server started at http://localhost:9876/
 INFO [launcher]: Starting browser Chrome
-INFO [Chrome 33.0.1750 (Mac OS X 10.9.2)]: Connected on socket riJgfDa7iGPHvrlcmPhH with id 52138247
-Chrome 33.0.1750 (Mac OS X 10.9.2): Executed 0 of 0 ERROR (0.019 secs / 0 secs)
+INFO [Chrome 44.0.2403 (Mac OS X 10.10.3)]: Connected on socket riJgfDa7iGPHvrlcmPhH with id 52138247
+Chrome 44.0.2403 (Mac OS X 10.10.3): Executed 0 of 0 ERROR (0.019 secs / 0 secs)
 ```
 
 - Now that we have `karma` up and running, let's write some tests!
