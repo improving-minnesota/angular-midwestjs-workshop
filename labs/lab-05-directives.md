@@ -37,7 +37,7 @@ grunt serve:development
 <form class="form-horizontal" novalidate name="employeeForm">
 ```
 
-- Add the following validation to the form:
+- Add the following validation to the form using `ng-minlength`, `ng-maxlength`, and `required`:
   - Set the **username** to have a minimum length of 1, a max length of 40, and a required field.
   - Set the **email** to have a minimum length of 1, a max length of 100, and a required field.
   - Set the **first name** to have a minimum length of 1, a max length of 100, and a required field.
