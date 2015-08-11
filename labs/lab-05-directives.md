@@ -75,7 +75,7 @@ ng-disabled="employeeForm.$invalid"
 
 > Once again the projects module has been completed for you so that you can use it as a frame of reference.
 
-###### Modify the controller method for getting a list of employees
+###### Review the controller method for getting a list of employees
 - Your teammates have implemented the controller changes needed to get a page of employees for you.
 - Open **client/src/app/employees/controllers.js**
 
@@ -118,7 +118,7 @@ data.page('employees', query)
 - Open **client/assets/templates/app/employees/index.html**
 - Look for the `TODO` near line 51 and add the *pagination* directive:
   - Set the `total-items` to the value of `pageConfig.totalItems`.
-  - Set the `page` to the value of `pageConfig.page`.
+  - Set the `ng-model` to the value of `pageConfig.page`.
   - Set the `items-per-page` to the value of `pageConfig.limit`
   - We also want to show the `boundary-links` and have the buttons `rotate`.
   - Lastly, when a page is selected, we want to call the `requestEmployees(page)` function on our controller's scope.
@@ -131,7 +131,7 @@ data.page('employees', query)
     items-per-page="pageConfig.limit"
     boundary-links="true"
     rotate="true"
-    ng-change="requestEmployees(page)">
+    ng-change="requestEmployees(pageConfig.page)">
   </div>
 </div>
 ```
@@ -139,12 +139,12 @@ data.page('employees', query)
 - UI Bootstrap's pagination directive expects a number of attributes to control how it works.
   - `total-items` : The total number of items available in the database.
     - This helps the directive figure out how many buttons to display for pages.
-  - `page` : The page number currently displayed
+  - `ng-model` : The page number currently displayed
   - `items-per-page` : How many items are displayed per page.
     - Also used to determine how many page buttons there will be.
   - `boundary-links` : Whether or not to show the rewind and fast forward buttons.
   - `rotate` : Whether or not to keep the current page's button in the middle.
-  - `on-select-page` : What happens when the user clicks one of the page buttons.
+  - `ng-change` : What happens when the user clicks one of the page buttons.
     - This automatically calls the function with the page number as the argument.
 
 - With this directive added, navigate to the employees page and check to see if it is displayed.
